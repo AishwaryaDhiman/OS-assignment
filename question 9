@@ -1,0 +1,46 @@
+#include <stdio.h> 
+int main() 
+{
+      int arrival_time[10], burst_time[10], tempor[10];
+      int i, minimum, flag = 0, time, total;
+      double wait_time = 0, turnaround_time = 0, last;
+      float average_waiting_time, average_turnaround_time;
+     
+      printf("\nEnter the Total Number of Processes:\t");
+      scanf("%d", &total); 
+      
+      printf("\nEnter Details of %d Processes\n", limit);
+      for(i = 0; i < total; i++)
+      {
+            printf("\nEnter Arrival Time:\t");
+            scanf("%d", &arrival_time[i]);
+            printf("Enter Burst Time:\t");
+            scanf("%d", &burst_time[i]); 
+            tempor[i] = burst_time[i];
+      }
+      burst_time[9] = 9999;  
+      for(time = 0; flag != total; time++)
+      {
+            minimum = 9;
+            for(i = 0; i < total; i++)
+            {
+                  if(arrival_time[i] <= time && burst_time[i] < burst_time[minimum] && burst_time[i] > 0)
+                  {
+                        minimum = i;
+                  }
+            }
+            burst_time[minimum]--;
+            if(burst_time[minimum] == 0)
+            {
+                  flag++;
+                  last = time + 1;
+                  wait_time = wait_time + last - arrival_time[minimum] - temp[minimum];
+                  turnaround_time = turnaround_time + last - arrival_time[minimum];
+            }
+      }
+      average_waiting_time = wait_time / total; 
+      average_turnaround_time = turnaround_time / total;
+      printf("\nAverage Waiting Time:\t%lfn", average_waiting_time);
+      printf("\nAverage Turnaround Time:\t%lfn", average_turnaround_time);
+      return 0;
+}
