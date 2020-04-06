@@ -18,7 +18,7 @@ int main()
             scanf("%d", &burst_time[i]); 
             tempor[i] = burst_time[i];
       }
-      burst_time[9] = 9999;  
+      burst_time[9] = 99999;  
       for(time = 0; flag != total; time++)
       {
             minimum = 9;
