@@ -49,8 +49,8 @@ int sorting()
         temp      = proc_s[d];
         proc_s[d] = proc_s[d+1];
         proc_s[d+1] = temp;
-          int c, d, swap, temp, btemp;                                                                                                 for (c = 0 ; c < total_process - 1; c++)
-  {                                                                                                                                          for (d = 0 ; d < total_process- c - 1; d++)
+          int c, d, swap, temp, btemp;                                                                                                                                                                                                                                                                                                                                for (c = 0 ; c < total_process - 1; c++)
+  {                                                                                                                                                                               for (d = 0 ; d < total_process- c - 1; d++)
     {
       if (ar_time[d] > ar_time[d+1])
       {
@@ -65,10 +65,10 @@ int sorting()
         proc_s[d+1] = temp;                                                                                                                                                   
         //burst time's change the sequence as arival time
         btemp        = br_time[d];
-        br_time[d]   = br_time[d+1];                                                                                                           br_time[d+1] = btemp;
-                                                                                                                                               }
-    }                                                                                                                                   }
-                                                                                                                                       return 0;
+        br_time[d]   = br_time[d+1];                                                                                                                                                  br_time[d+1] = btemp;
+                                                                                                                                                                                    }
+    }                                                                                                                                                                           }
+                                                                                                                                                                              return 0;
 }
 int max(int ar[],int size)
 {
@@ -76,8 +76,8 @@ int max(int ar[],int size)
   maximum = ar[0];
   for (c = 1; c < size; c++)  
    {
-    if (ar[c] > maximum)                                                                                                                     {
-       maximum  = ar[c];                                                                                                                       loc = c+1;                                                                                                                           }
+    if (ar[c] > maximum)                                                                                                                                                          {
+       maximum  = ar[c];                                                                                                                                                             loc = c+1;                                                                                                                                                                 }
   }
   return maximum;
 }
@@ -92,16 +92,16 @@ void show_result()
     {if (proc_s[d] > proc_s[d+1])    
     
     {
-        //arival time sorting                                                                                                                   swap = ar_time[d];
-        ar_time[d]   = ar_time[d+1];                                                                                                           ar_time[d+1] = swap;
-                                                                                                                                               //for store the process numbers
-        temp      = proc_s[d];                                                                                                                 proc_s[d] = proc_s[d+1];
-        proc_s[d+1] = temp;                                                                                                                                                                                                                                                             //burst time's change the sequence as arival time
+        //arival time sorting                                                                                                                                                         swap         = ar_time[d];
+        ar_time[d]   = ar_time[d+1];                                                                                                                                                  ar_time[d+1] = swap;
+                                                                                                                                                                                      //for store the process numbers
+        temp      = proc_s[d];                                                                                                                                                        proc_s[d] = proc_s[d+1];
+        proc_s[d+1] = temp;                                                                                                                                                                                                                                                                                                                                         //burst time's change the sequence as arival time
         btemp        = br_time[d];
-        br_time[d]   = br_time[d+1];                                                                                                           br_time[d+1] = btemp;                                                                                                                                                                                                                                                           //for completion time
-        ctemp  = ct_a[d];                                                                                                                       ct_a[d]      = ct_a[d+1];
+        br_time[d]   = br_time[d+1];                                                                                                                                                  br_time[d+1] = btemp;                                                                                                                                                                                                                                                                                                                                       //for completion time
+        ctemp        = ct_a[d];                                                                                                                                                       ct_a[d]      = ct_a[d+1];
         ct_a[d+1]    = ctemp;                                                                                                                                                 
-      }                                                                                                                                     }                                                                                                                                   }
+      }                                                                                                                                                                           }                                                                                                                                                                           }
   printf("Process No\tCT \tTAT\tWT\t");
   for(i=0; i<total_process; i++)
   {
@@ -112,16 +112,17 @@ void show_result()
   }    
     wt1 = av_wt/total_process;
   tat1 = av_tat/total_process;
-                                                                                                                                         for(i=0; i<total_process; i++)                                                                                                            {                                                                                                                                        printf("\n%d\t\t%d\t%d\t%d\t",(proc_s[i]),ct_a[i],tat[i],wt[i]);
-  }                                                                                                                                      printf("\nAverage waiting time = %f", wt1);
-printf("\nAverage Turn Around time is = %f ", tat1);                                                                                   }
+                                                                                                                                                                                for(i=0; i<total_process; i++)                                                                                                                                                {                                                                                                                                                                                   printf("\n%d\t\t%d\t%d\t%d\t",(proc_s[i]),ct_a[i],tat[i],wt[i]);
+  }                                                                                                                                                                             printf("\nAverage waiting time = %f", wt1);
+  printf("\nAverage Turn Around time is = %f ", tat1);                                                                                                                        }
                                                                                                                                                                               
 int logic()                                                                                                                                                                   {
-        int d,n,swap, temp, btemp,ctemp;                                                                                                          for(i = 0; i<total_process; i++)                                                                                              {
-if(ar_time[i] <= ar_time[i+1])
-   { ct = ct + br_time[i];                                                                                                                       ct_a[i]=ct;                                                                                                                   
-else if(max(ar_time,total_process)<=ct) {
-                    break; } }
+        int d,n,swap, temp, btemp,ctemp;                                                                                                                                              for(i = 0; i<total_process; i++)                                                                                                                                              {
+
+                if(ar_time[i] <= ar_time[i+1])
+                {                                                                                                                                                                                             ct = ct + br_time[i];                                                                                                                                                     ct_a[i]=ct;                                                                                                                                                                                                                                                                                                                                     }
+                else if(max(ar_time,total_process)<=ct)                                                                                                                                       {
+                    break;                                                                                                                                                                    }                                                                                                                                                                     }
 
 j=i;
 k=j;
@@ -133,16 +134,18 @@ for (i; i < total_process - 1; i++)
       {
         //arival time sorting
         swap         = ar_time[d];
-        ar_time[d]   = ar_time[d+1];                                                                                                           ar_time[d+1] = swap;                                                                                                                                                  
-        //for store the process numbers                                                                                                         temp      = proc_s[d];
-        proc_s[d] = proc_s[d+1];                                                                                                               proc_s[d+1] = temp;
-                                                                                                                                               //burst time's change the sequence as arival time
-        btemp        = br_time[d];                                                                                                             br_time[d]   = br_time[d+1];
-        br_time[d+1] = btemp;                                                                                                                  }                                                                                                                                    }
+        ar_time[d]   = ar_time[d+1];                                                                                                                                                  ar_time[d+1] = swap;                                                                                                                                                  
+        //for store the process numbers                                                                                                                                               temp      = proc_s[d];
+        proc_s[d] = proc_s[d+1];                                                                                                                                                      proc_s[d+1] = temp;
+                                                                                                                                                                                      //burst time's change the sequence as arival time
+        btemp        = br_time[d];                                                                                                                                                    br_time[d]   = br_time[d+1];
+        br_time[d+1] = btemp;                                                                                                                                                       }                                                                                                                                                                           }
   }
-for(j; j<total_process; j++) 
-{  ct = ct + br_time[j];                                                                                                                ct_a[i]=ct;                                                                                                                             }
- for (k; k < total_process - 1; k++)                                                                                                   {   for (d = k ; d < total_process-k- 1; d++)
+                                                                                                                                                                               for(j; j<total_process; j++) 
+                                                                                                                                                                               
+                                                                                                                                                                              {                                                                                                                                                                                 ct = ct + br_time[j];                                                                                                                                                                 ct_a[i]=ct;                                                                                                                                                           }
+                                                                                                                                                                              
+  for (k; k < total_process - 1; k++)                                                                                                                                           {                                                                                                                                                                               for (d = k ; d < total_process-k- 1; d++)
     {
       if (ar_time[d] > ar_time[d+1])
       {
@@ -150,8 +153,8 @@ for(j; j<total_process; j++)
         swap         = ar_time[d];
         ar_time[d]   = ar_time[d+1];
         ar_time[d+1] = swap;
-         //for store the process numbers                                                                                                         temp      = proc_s[d];                                                                                                                 proc_s[d] = proc_s[d+1];                                                                                                               proc_s[d+1] = temp;                                                                                                                                                   
-        //burst time's change the sequence as arival time                                                                               btemp        = br_time[d];
-br_time[d]   = br_time[d+1];                                                                                                           br_time[d+1] = btemp;                                                                                                                   ctemp        = ct_a[d];
-ct_a[d]      = ct_a[d+1];                                                                                                               ct_a[d+1]    = ctemp;
-        }                                                                                                                                      }                                                                                                                                  }                                                                                                                                   }                                                                                                                                                   
+         //for store the process numbers                                                                                                                                               temp      = proc_s[d];                                                                                                                                                        proc_s[d] = proc_s[d+1];                                                                                                                                                      proc_s[d+1] = temp;                                                                                                                                                   
+        //burst time's change the sequence as arival time                                                                                                                             btemp        = br_time[d];
+        br_time[d]   = br_time[d+1];                                                                                                                                                  br_time[d+1] = btemp;                                                                                                                                                                                                                                                                                                                                       ctemp        = ct_a[d];
+        ct_a[d]      = ct_a[d+1];                                                                                                                                                     ct_a[d+1]    = ctemp;
+                                                                                                                                                                                    }                                                                                                                                                                           }                                                                                                                                                                           }                                                                                                                                                                                                                                                                                                                                                         }                                                                                                                                                   
